@@ -19,7 +19,8 @@ class PictureMapper {
   }
 
   static Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
+    // final directory = await getApplicationDocumentsDirectory();
+    final directory = await getTemporaryDirectory();
     return directory.path;
   }
 

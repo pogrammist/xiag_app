@@ -52,6 +52,7 @@ class _ViewerState extends State<Viewer> {
                   fit: BoxFit.cover,
                   loadingBuilder: (context, child, loadingProgress) {
                     if (loadingProgress == null) return child;
+                    // it doesn't work because another thread is being used
                     return Center(
                         child: Image.asset(
                       "assets/gif/loading-opaque.gif",

@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:path/path.dart';
 import 'package:mobx/mobx.dart';
 import 'package:xiag_app/domain/model/picture.dart';
 import 'package:xiag_app/domain/repository/picture_repository.dart';
@@ -39,10 +40,11 @@ abstract class ViewerStateBase with Store {
       isLoading = true;
       try {
         final path = await filePath;
+        final fileName = basename(path);
         print('Flutter filePath: $path');
         await channel.invokeMethod(
           'sendMail',
-          {'filePath': path},
+          {'fileName': fileName},
         );
       } on PlatformException catch (e) {
         print(e.message);
